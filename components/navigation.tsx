@@ -3,11 +3,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 export default function Navigation() {
   const path = usePathname();
-  // 콘솔을 찍어보면 벡엔드에도 콘솔이 찍히는 것을 볼 수 있다.
-  console.log("SSR");
+  const [count, setCount] = useState(0);
 
   return (
     <nav>
@@ -17,6 +17,9 @@ export default function Navigation() {
         </li>
         <li>
           <Link href="/about-us">About Us</Link> {path === "/about-us" ? "🔥" : ""}
+        </li>
+        <li>
+          <button onClick={() => setCount((item) => ++item)}>{count}</button>
         </li>
       </ul>
     </nav>
