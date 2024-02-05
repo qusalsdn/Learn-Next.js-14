@@ -12,7 +12,7 @@ interface Movie {
   runtime: number;
 }
 
-async function getMovie(id: string) {
+export async function getMovie(id: string) {
   // console.log(`Fetching movies: ${Date.now()}`);
   // await new Promise((resolve) => setTimeout(resolve, 5000));
   return fetch(`${API_URL}/${id}`).then((res) => res.json());
@@ -29,9 +29,9 @@ export default async function MovieInfo({ id }: { id: string }) {
         <h3>⭐{movie.vote_average.toFixed(1)}</h3>
         <p>{movie.overview}</p>
         <h2 className={styles.h2}>Release Date</h2>
-        <p>{movie.release_date}</p>
+        <p>📅 {movie.release_date}</p>
         <h2 className={styles.h2}>Revenue</h2>
-        <p>$ {movie.revenue.toLocaleString()}</p>
+        <p>💸 {movie.revenue.toLocaleString()}</p>
         <h2 className={styles.h2}>Runtime</h2>
         <p>⏱ {movie.runtime}(M)</p>
         <a href={movie.homepage} target="_blank">
